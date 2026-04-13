@@ -132,26 +132,114 @@ output:
 
 ## 🚀 How to Run
 
-### 1️⃣ Clone Repo
+### 1️ Clone Repo
 
 ```
 git clone https://github.com/your-username/RetinopathyOfPrematurity.git
 cd RetinopathyOfPrematurity
 ```
 
-### 2️⃣ Install Requirements
+## 📥 Model Weights (Updated)
+
+Download the required models:
+
+* 🧬 Segmentation Model:
+  https://drive.google.com/file/d/1nhP_NzMBj1EMYui5WssUiLhVrn8cJoEw/view?usp=sharing
+
+* ⚛️ Quantum Model:
+  https://drive.google.com/file/d/1wiHfvbVPZpgvtetxcpoZ2Xt4jb4aoc70/view?usp=sharing
+
+---
+
+## 📁 Place the Files Here
+
+After downloading, place them in:
 
 ```
-pip install -r requirements.txt
-```
-
-### 3️⃣ Run Streamlit App
-
-```
-streamlit run app.py
+models/
+├── segment.pth
+├── quantum.pth
 ```
 
 ---
+
+## ⚙️ Changes in `app.py`
+
+Update model paths:
+
+```python
+SEGMENT_MODEL_PATH = "models/segment.pth"
+QUANTUM_MODEL_PATH = "models/quantum.pth"
+```
+
+---
+
+## 🧠 Load Both Models
+
+```python
+segment_model = load_model(SEGMENT_MODEL_PATH)
+quantum_model = load_model(QUANTUM_MODEL_PATH)
+```
+
+---
+
+## 🔄 Prediction Flow Update
+
+```python
+# Step 1: Segmentation
+segmented_output = segment_model(image_tensor)
+
+# Step 2: Quantum Prediction
+prob = predict(quantum_model, segmented_output)
+```
+
+---
+## ▶️ Run the Application
+
+Start the Streamlit app using:
+
+```bash
+streamlit run app.py
+```
+
+After running, open your browser at:
+
+```
+http://localhost:8501
+```
+
+---
+
+### ⚠️ Before Running
+
+Make sure:
+
+* Models are downloaded and placed in `models/` folder
+* All dependencies are installed
+
+---
+
+### 🧪 Usage
+
+1. Upload a retinal image
+2. Wait for processing
+3. View result:
+
+   * ✅ Normal
+   * ⚠️ Abnormal (ROP Detected)
+
+---
+
+
+## ⚠️ Note
+
+Both models are required for the full pipeline:
+
+* Segmentation → Feature Extraction
+* Quantum Model → Final Classification
+
+---
+
 
 ## 🧪 Tech Stack
 
