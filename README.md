@@ -244,10 +244,10 @@ Both models are required for the full pipeline:
 ## 🧪 Tech Stack
 
 * Python
-* PyTorch / TensorFlow
+* PyTorch 
 * OpenCV
 * Streamlit
-* PennyLane / Qiskit (for Quantum Computing)
+* PennyLane  (for Quantum Computing)
 
 ---
 
